@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>{{ config('app.name', 'rememeber cards') }}</title>
+  
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -70,8 +70,21 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <main class="py-4">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-center">
+                            @yield('title')
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+            
+        </main>
     </div>
 
     <!-- Scripts -->
